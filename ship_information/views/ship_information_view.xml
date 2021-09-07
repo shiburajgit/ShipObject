@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ship_tree" model="ir.ui.view">
+        <field name="name">ship.tree</field>
+        <field name="model">ship.information</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="imo"/>
+                <field name="hull_number"/>
+                <field name="engine_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ship_form" model="ir.ui.view">
+        <field name="name">ship.form</field>
+        <field name="model">ship.information</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="imo"/>
+                            <field name="hull_number"/>
+                            <field name="engine_number"/>
+                            <field name="build_year"/>
+                            <field name="vessel_name"/>
+                        </group>
+                        <group>
+                            <field name="responsible_id"/>
+                            <field name="ship_yard"/>
+                            <field name="ship_owner"/>
+                            <field name="ship_management"/>
+                            <field name="engine_builder"/>
+
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ship_info" model="ir.actions.act_window">
+        <field name="name">Ship Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ship.information</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new ship informations
+            </p>
+        </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem id="menu_ship_root"
+              name="Ship"
+              sequence="10"/>
+
+    <menuitem id="menu_ship_information_root"
+              name="Ship Information"
+              parent="menu_ship_root"
+              action="action_ship_info"
+              sequence="10"/>
+    <menuitem id="menu_ship_information"
+              name="Ship Information"
+              parent="sale.menu_sale_config"
+              action="action_ship_info"
+              sequence="-10"/>
+
+</odoo>

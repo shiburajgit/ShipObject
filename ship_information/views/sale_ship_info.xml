@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_ship" model="ir.ui.view">
+        <field name="name">ship.information.inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_term_id" position="after">
+                <field name="ship_id"/>
+            </field>
+        </field>
+    </record>
+    <record id="sale_ship_new" model="ir.ui.view">
+        <field name="name">ship.information.inherited1</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="before">
+                <field name="project"/>
+                <field name="contract_no"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="purchase_info" model="ir.ui.view">
+        <field name="name">purchase.info.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Related Purchase Order " name="purchaseinfo">
+                    <field name="purchase_ids" readonly="1"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+    <record id="sale_ship_tree" model="ir.ui.view">
+        <field name="name">ship.information.inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="ship_id"/>
+                <field name="project"/>
+                <field name="contract_no"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="ship_button" model="ir.ui.view">
+        <field name="name">sale.order.ship.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="ship_id" position="after">
+                <button name="update_ship" class="btn btn-primary" string="Update to sale order lines"
+                        type="object"/>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>

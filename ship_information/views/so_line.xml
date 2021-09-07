@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_so_line" model="ir.ui.view">
+        <field name="name">ship.information.inherited.so</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
+                <field name="ship_information_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
